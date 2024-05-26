@@ -119,8 +119,6 @@ dist
 
 # Gatsby files
 .cache/
-# Comment the next line if you want to check your public folder into your repository
-/public
 
 # vuepress build output
 .vuepress/dist
