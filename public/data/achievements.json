@@ -3,7 +3,7 @@
     "year": "2023",
     "grade": "Secondary 1",
     "items": [
-      {"title": "AIO", "award": "GOLD", "ranking": "", "filename": ""},
+      {"title": "AIO", "award": "GOLD", "ranking": "", "filename": "2023AIO.pdf"},
       {"title": "SMO Junior", "award": "BRONZE", "ranking": "", "filename": "2023SMOJ.pdf"},
       {"title": "SJPO", "award": "BRONZE", "ranking": "", "filename": "2023SJPO.pdf"},
       {"title": "DrCT", "award": "GOLD", "ranking": "3rd in Singapore", "filename": ""},
