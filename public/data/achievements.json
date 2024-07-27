@@ -19,13 +19,19 @@
         "title": "SMKC",
         "award": "GOLD",
         "ranking": "",
-        "filename": "2023AIO.pdf"
+        "filename": "2024SMKC.pdf"
       },
       {
         "title": "Mosque Tech Challenge Hackathon",
         "award": "3rd Prize",
         "ranking": "2nd Runner-up",
-        "filename": "2023AIO.pdf"
+        "filename": ""
+      },
+      {
+        "title": "DrCT",
+        "award": "GOLD",
+        "ranking": "1st Globally",
+        "filename": "2024DRCT.pdf"
       }
     ]
   },
