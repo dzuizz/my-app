@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Awards */
+.PLATINUM, .HIGH.DISTINCTION {
+    color: #E0B0FF;
+}
+
+.GOLD, .DISTINCTION, .Place {
+    color: #FFD700;
+}
+
+.SILVER, .MERIT {
+    color: #C0C0C0;
+}
+
+.BRONZE {
+    color: #CD7F32;
+}
