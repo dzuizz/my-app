@@ -4,6 +4,12 @@
     "grade": "Secondary 2",
     "items": [
       {
+        "title": "OSN SMP Matematika",
+        "award": "PERAK",
+        "ranking": "Top 15 in Indonesia",
+        "filename": ""
+      },
+      {
         "title": "SMO Junior",
         "award": "GOLD",
         "ranking": "",
@@ -16,14 +22,8 @@
         "filename": "2024SMOO.pdf"
       },
       {
-        "title": "SMKC",
-        "award": "GOLD",
-        "ranking": "",
-        "filename": "2024SMKC.pdf"
-      },
-      {
         "title": "Mosque Tech Challenge Hackathon",
-        "award": "3rd Prize",
+        "award": "THIRD PRIZE",
         "ranking": "2nd Runner-up",
         "filename": ""
       },
@@ -32,6 +32,12 @@
         "award": "GOLD",
         "ranking": "1st Globally",
         "filename": "2024DRCT.pdf"
+      },
+      {
+        "title": "SMKC",
+        "award": "GOLD",
+        "ranking": "",
+        "filename": "2024SMKC.pdf"
       }
     ]
   },
@@ -368,6 +374,12 @@
         "award": "3 Years Ahead",
         "ranking": "",
         "filename": "2020KUMON.jpg"
+      },
+      {
+        "title": "Irsyad Certificate of Achievement",
+        "award": "Best in Math",
+        "ranking": "",
+        "filename": "2020BestInMath.jpg"
       }
     ]
   },
@@ -470,6 +482,18 @@
         "award": "Level 1",
         "ranking": "",
         "filename": ""
+      }
+    ]
+  },
+  {
+    "year": "2017",
+    "grade": "Primary 1",
+    "items": [
+      {
+        "title": "Irsyad Certificate of Achievement",
+        "award": "Best in Math",
+        "ranking": "",
+        "filename": "2017BestInMath.jpg"
       }
     ]
   }

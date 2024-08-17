@@ -11,10 +11,11 @@
     color: #FFD700;
 }
 
-.SILVER, .MERIT {
+.SILVER, .MERIT, .PERAK {
     color: #C0C0C0;
 }
 
-.BRONZE {
+.BRONZE, .THIRD {
     color: #CD7F32;
 }
+

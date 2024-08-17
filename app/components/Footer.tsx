@@ -10,7 +10,7 @@ export default function Footer() {
         height={500}
         alt="Image of Ahmad Dzuizz Annajib wearing NUS High School's very own Physics Interest Group (Quanta) shirt when helping out during NUS High School Open House 2024"
       />
-      <div className="text-xs font-mono">photo credits: Kai Ming</div>
+      <div className="text-xs font-mono">photo credits: Teh Kai Ming</div>
     </section>
   );
 }
