@@ -19,7 +19,7 @@ export default function BlogIndex() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-12">Blog</h1>
       <ul className="space-y-8">
-        {posts.map((post) => (
+        {posts.sort((a, b) => b.date.localeCompare(a.date)).map((post) => (
           <li key={post.slug} className="p-4 border rounded-lg hover:shadow-lg transition-shadow">
             <Link href={`/blog/${post.slug}`}>
               <div>
