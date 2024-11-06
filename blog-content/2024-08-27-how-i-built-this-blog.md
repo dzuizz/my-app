@@ -1,5 +1,5 @@
 ---
-title: "How I buit this blog"
+title: "How I built this blog"
 date: "2024-08-27"
 description: "A detailed guide on how I built this blog using Next.js and Tailwind CSS."
 ---
