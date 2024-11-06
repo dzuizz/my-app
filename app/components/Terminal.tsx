@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import LoadingScreen from './LoadingScreen';
-import achievementsData from '../../public/data/achievements.json';
+import LoadingScreen from '@/app/components/LoadingScreen';
+import achievementsData from '@/public/data/achievements.json';
+import contests from '@/public/data/contests.json';
 
 const achievements = achievementsData;
 
@@ -169,11 +170,11 @@ export default function Terminal() {
                               {year.items.map((item, j) => (
                                 <div
                                   key={j}
-                                  className="flex items-baseline gap-2 text-sm"
+                                  className="items-baseline gap-2 text-sm"
                                 >
-                                  <span className="text-yellow-500">→</span>
+                                  <span className="text-yellow-500">→ </span>
                                   <span className="text-green-400">
-                                    {item.title}
+                                    {item.title} {contests[item.title as keyof typeof contests] ? "(" + contests[item.title as keyof typeof contests] + ") " : ""}
                                   </span>
                                   <span
                                     className={`text-xs ${getAwardColor(item.award)}`}
