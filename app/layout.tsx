@@ -1,23 +1,30 @@
-import React from "react";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { JetBrains_Mono } from 'next/font/google';
 
-const inter = Inter({ subsets: ["latin"] });
+import LoadingScreen from './components/LoadingScreen';
+import styles from '@/app/noise.module.css';
+import '@/app/globals.css';
+
+const jetbrains = JetBrains_Mono({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Ahmad Dzuizz Annajib",
-  description: "Web Code Portfolio",
+  title: 'dzuizz@portfolio',
+  description: 'Math & Code',
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en">
-            <body className={`text-slate-400 bg-cetascean-blue ${inter.className}`}>{children}</body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body
+        className={`${jetbrains.className} overflow-x-hidden bg-black text-green-500`}
+      >
+        <div className={styles.noiseBg} />
+        {children}
+      </body>
+    </html>
+  );
 }

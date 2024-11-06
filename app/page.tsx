@@ -1,16 +1,11 @@
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Achievements from "./components/Achievements";
-import Footer from "./components/Footer";
+import Terminal from './components/Terminal';
 
 export default function Home() {
   return (
-    <main className="px-6 pt-16 w-full min-h-screen">
-      <Hero />
-      <About />
-      <Achievements />
-      <Footer />
+    <main className="mx-auto min-h-screen max-w-2xl px-4 py-8">
+      <div className="relative space-y-8">
+        <Terminal />
+      </div>
     </main>
   );
 }
-

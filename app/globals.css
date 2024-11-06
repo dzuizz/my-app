@@ -2,20 +2,171 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Awards */
-.PLATINUM, .HIGH.DISTINCTION {
-    color: #E0B0FF;
+@layer components {
+  .prose-terminal {
+    @apply prose prose-invert max-w-none font-mono text-green-500;
+  }
+
+  .prose-terminal h1 {
+    @apply text-3xl font-bold text-green-400 mt-12 mb-6;
+  }
+
+  .prose-terminal h2 {
+    @apply text-2xl font-bold text-green-400 mt-10 mb-4;
+  }
+
+  .prose-terminal h3 {
+    @apply text-xl font-bold text-green-400 mt-8 mb-3;
+  }
+
+  .prose-terminal p {
+    @apply text-green-500 leading-7 mb-6;
+  }
+
+  .prose-terminal ul {
+    @apply text-green-500 my-6 ml-6 list-disc;
+  }
+
+  .prose-terminal ol {
+    @apply text-green-500 my-6 ml-6 list-decimal;
+  }
+
+  .prose-terminal li {
+    @apply my-2;
+  }
+
+  .prose-terminal li > p {
+    @apply mb-0;
+  }
+
+  .prose-terminal blockquote {
+    @apply border-l-4 border-green-500/50 pl-4 my-6 italic text-green-400/80;
+  }
+
+  .prose-terminal pre {
+    @apply bg-green-500/10 rounded-lg p-4 my-6 overflow-auto;
+  }
+
+  .prose-terminal code {
+    @apply bg-green-500/10 text-green-400 rounded px-1.5 py-0.5 text-sm;
+  }
+
+  .prose-terminal pre code {
+    @apply bg-transparent p-0 text-base;
+  }
+
+  .prose-terminal hr {
+    @apply border-green-500/30 my-8;
+  }
+
+  .prose-terminal table {
+    @apply border-collapse w-full my-6;
+  }
+
+  .prose-terminal th {
+    @apply border border-green-500/30 px-4 py-2 text-green-400 bg-green-500/10;
+  }
+
+  .prose-terminal td {
+    @apply border border-green-500/30 px-4 py-2 text-green-500;
+  }
+
+  .prose-terminal a {
+    @apply text-green-400 underline hover:text-green-300 transition-colors duration-200;
+  }
+
+  /* Task lists like in Obsidian/Notion */
+  .prose-terminal ul[data-type="taskList"] {
+    @apply list-none ml-0;
+  }
+
+  .prose-terminal ul[data-type="taskList"] li {
+    @apply flex items-start gap-2;
+  }
+
+  .prose-terminal ul[data-type="taskList"] li input[type="checkbox"] {
+    @apply mt-1.5 h-4 w-4 rounded border-green-500 bg-transparent 
+           checked:bg-green-500 checked:border-green-500 focus:ring-green-500;
+  }
 }
 
-.GOLD, .DISTINCTION, .Place {
-    color: #FFD700;
+/* Your existing glitch effect CSS remains the same */
+.glitch-text {
+  @apply text-lg font-bold text-green-400;
+  position: relative;
+  animation: glitch 1s linear infinite;
 }
 
-.SILVER, .MERIT, .PERAK {
-    color: #C0C0C0;
+/* Existing glitch effect */
+.glitch-text {
+  @apply text-lg font-bold text-green-400;
+  position: relative;
+  animation: glitch 1s linear infinite;
 }
 
-.BRONZE, .THIRD, .HONOURABLE {
-    color: #CD7F32;
+/* Glitch effect */
+.glitch-text {
+  @apply text-lg font-bold text-green-400;
+  position: relative;
+  animation: glitch 1s linear infinite;
 }
 
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  text-shadow: 1px 0 blue;
+  top: 0;
+  width: 100%;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -1px 0 red;
+  animation: glitch-anim-1 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+  2%,
+  64% {
+    transform: translate(2px, 0) skew(0deg);
+  }
+  4%,
+  60% {
+    transform: translate(-2px, 0) skew(0deg);
+  }
+  62% {
+    transform: translate(0, 0) skew(5deg);
+  }
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip: rect(2px, 9999px, 6px, 0);
+  }
+  25% {
+    clip: rect(25px, 9999px, 29px, 0);
+  }
+  50% {
+    clip: rect(44px, 9999px, 48px, 0);
+  }
+  75% {
+    clip: rect(67px, 9999px, 71px, 0);
+  }
+  100% {
+    clip: rect(86px, 9999px, 90px, 0);
+  }
+}
+
+/* Hide scrollbar while allowing scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
