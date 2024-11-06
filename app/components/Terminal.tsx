@@ -174,7 +174,16 @@ export default function Terminal() {
                                 >
                                   <span className="text-yellow-500">→ </span>
                                   <span className="text-green-400">
-                                    {item.title} {contests[item.title as keyof typeof contests] ? "(" + contests[item.title as keyof typeof contests] + ") " : ""}
+                                    {item.title}{' '}
+                                    {contests[
+                                      item.title as keyof typeof contests
+                                    ]
+                                      ? '(' +
+                                        contests[
+                                          item.title as keyof typeof contests
+                                        ] +
+                                        ') '
+                                      : ''}
                                   </span>
                                   <span
                                     className={`text-xs ${getAwardColor(item.award)}`}
