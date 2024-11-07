@@ -12,8 +12,8 @@ export default function Terminal() {
   const [visibleSections, setVisibleSections] = useState<string[]>([
     'header',
     'about',
-    'socials',
     'achievements',
+    'socials',
   ]);
   const [showCursor, setShowCursor] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
@@ -79,75 +79,26 @@ export default function Terminal() {
                     <Command>cat about.txt</Command>
                     <Output>
                       <div className="glitch-text">Ahmad Dzuizz Annajib</div>
-                      <div className="mt-1 text-green-600">
+                      <a
+                        href="https://www.nushigh.edu.sg/"
+                        className="mt-1 text-green-600"
+                      >
                         NUS High School of Math & Science
-                      </div>
-                      <div className="text-green-600">
+                      </a>
+                      {' ← '}
+                      <a
+                        href="https://www.afkaaruna.sch.id/"
+                        className="text-green-600"
+                      >
                         MTs Afkaaruna Islamic School
-                      </div>
-                      <div className="text-green-600">
+                      </a>
+                      {' ← '}
+                      <a href="https://irsyad.sg/" className="text-green-600">
                         Madrasah Irsyad Zuhri Al-Islamiah
-                      </div>
+                      </a>
                       <div className="mt-2 italic text-green-400">
                         &quot;I think my life through code, and code through my
                         life.&quot;
-                      </div>
-                    </Output>
-                  </Section>
-                )}
-
-                {visibleSections.includes('socials') && (
-                  <Section>
-                    <Command>ls -la socials/</Command>
-                    <Output>
-                      <div className="grid grid-cols-2 gap-2">
-                        {[
-                          {
-                            name: 'Instagram',
-                            link: '@ahmad.dzuizz.annajib',
-                            href: 'https://www.instagram.com/ahmad.dzuizz.annajib/',
-                          },
-                          {
-                            name: 'Twitter',
-                            link: '@AhmadDzuizz',
-                            href: 'https://x.com/AhmadDzuizz/',
-                          },
-                          {
-                            name: 'LinkedIn',
-                            link: 'dzuizz',
-                            href: 'https://www.linkedin.com/in/dzuizz/',
-                          },
-                          {
-                            name: 'GitHub',
-                            link: 'dzuizz',
-                            href: 'https://github.com/dzuizz',
-                          },
-                          {
-                            name: 'Codeforces',
-                            link: 'dzuizz',
-                            href: 'https://codeforces.com/profile/dzuizz',
-                          },
-                          {
-                            name: 'Kattis',
-                            link: 'dzuizz',
-                            href: 'https://open.kattis.com/users/dzuizz',
-                          },
-                        ].map((social, i) => (
-                          <div
-                            key={i}
-                            className="flex items-center gap-2 text-sm"
-                          >
-                            <a href={social.href} className="text-green-600">
-                              λ
-                            </a>
-                            <a href={social.href} className="text-green-400">
-                              {social.name}
-                            </a>
-                            <a href={social.href} className="text-green-600">
-                              {social.link}
-                            </a>
-                          </div>
-                        ))}
                       </div>
                     </Output>
                   </Section>
@@ -193,6 +144,63 @@ export default function Terminal() {
                                 </div>
                               ))}
                             </div>
+                          </div>
+                        ))}
+                      </div>
+                    </Output>
+                  </Section>
+                )}
+
+                {visibleSections.includes('socials') && (
+                  <Section>
+                    <Command>ls -la socials/</Command>
+                    <Output>
+                      <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
+                        {[
+                          {
+                            name: 'Instagram',
+                            link: '@ahmad.dzuizz.annajib',
+                            href: 'https://www.instagram.com/ahmad.dzuizz.annajib/',
+                          },
+                          {
+                            name: 'Twitter',
+                            link: '@AhmadDzuizz',
+                            href: 'https://x.com/AhmadDzuizz/',
+                          },
+                          {
+                            name: 'LinkedIn',
+                            link: 'dzuizz',
+                            href: 'https://www.linkedin.com/in/dzuizz/',
+                          },
+                          {
+                            name: 'GitHub',
+                            link: 'dzuizz',
+                            href: 'https://github.com/dzuizz',
+                          },
+                          {
+                            name: 'Codeforces',
+                            link: 'dzuizz',
+                            href: 'https://codeforces.com/profile/dzuizz',
+                          },
+                          {
+                            name: 'Kattis',
+                            link: 'dzuizz',
+                            href: 'https://open.kattis.com/users/dzuizz',
+                          },
+                        ].map((social, i) => (
+                          <div
+                            key={i}
+                            className="flex items-center gap-2 text-sm"
+                          >
+                            <a href={social.href} className="text-green-600">
+                              λ
+                            </a>
+                            <a href={social.href} className="text-green-400">
+                              {social.name}
+                            </a>
+                            <a href={social.href} className="text-green-600">
+                              {social.link}
+                            </a>
                           </div>
                         ))}
                       </div>
