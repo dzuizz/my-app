@@ -23,12 +23,12 @@ export default function LoadingScreen({
       setCurrentTextIndex((prev) =>
         prev < loadingTexts.length - 1 ? prev + 1 : prev
       );
-    }, 1000);
+    }, 500);
 
     const hideTimeout = setTimeout(() => {
       setShowLoading(false);
       onLoadingComplete(); // Signal that loading is complete
-    }, 4000);
+    }, 2000);
 
     return () => {
       clearInterval(textInterval);
