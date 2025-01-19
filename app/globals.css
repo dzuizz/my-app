@@ -35,7 +35,7 @@
     @apply my-2;
   }
 
-  .prose-terminal li > p {
+  .prose-terminal li>p {
     @apply mb-0;
   }
 
@@ -85,8 +85,7 @@
   }
 
   .prose-terminal ul[data-type="taskList"] li input[type="checkbox"] {
-    @apply mt-1.5 h-4 w-4 rounded border-green-500 bg-transparent 
-           checked:bg-green-500 checked:border-green-500 focus:ring-green-500;
+    @apply mt-1.5 h-4 w-4 rounded border-green-500 bg-transparent checked:bg-green-500 checked:border-green-500 focus:ring-green-500;
   }
 }
 
@@ -130,14 +129,17 @@
 }
 
 @keyframes glitch {
+
   2%,
   64% {
     transform: translate(2px, 0) skew(0deg);
   }
+
   4%,
   60% {
     transform: translate(-2px, 0) skew(0deg);
   }
+
   62% {
     transform: translate(0, 0) skew(5deg);
   }
@@ -147,15 +149,19 @@
   0% {
     clip: rect(2px, 9999px, 6px, 0);
   }
+
   25% {
     clip: rect(25px, 9999px, 29px, 0);
   }
+
   50% {
     clip: rect(44px, 9999px, 48px, 0);
   }
+
   75% {
     clip: rect(67px, 9999px, 71px, 0);
   }
+
   100% {
     clip: rect(86px, 9999px, 90px, 0);
   }
@@ -163,10 +169,28 @@
 
 /* Hide scrollbar while allowing scrolling */
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
+  /* Chrome, Safari and Opera */
+}
+
+/* Masonry grid styles */
+.my-masonry-grid {
+  display: flex;
+  width: auto;
+  gap: 1rem;
+}
+
+.my-masonry-grid_column {
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column>div {
+  margin-bottom: 1rem;
 }

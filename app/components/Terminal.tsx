@@ -130,10 +130,10 @@ export default function Terminal() {
                                       item.title as keyof typeof contests
                                     ]
                                       ? '(' +
-                                        contests[
-                                          item.title as keyof typeof contests
-                                        ] +
-                                        ') '
+                                      contests[
+                                      item.title as keyof typeof contests
+                                      ] +
+                                      ') '
                                       : ''}
                                   </span>
                                   <span
@@ -249,26 +249,18 @@ function Output({ children }: { children: React.ReactNode }) {
 }
 
 function getAwardColor(award: string) {
-  const lower = award.toLowerCase();
-  if (lower.includes('platinum') || lower.includes('high distinction'))
-    return 'text-purple-400';
-  if (
-    lower.includes('gold') ||
-    lower.includes('distinction') ||
-    lower.includes('place')
-  )
+  const lowerAward = award.toLowerCase();
+  if (lowerAward.includes('gold') || lowerAward.includes('first') || lowerAward.includes('champion')) {
     return 'text-yellow-500';
-  if (
-    lower.includes('silver') ||
-    lower.includes('merit') ||
-    lower.includes('perak')
-  )
-    return 'text-slate-400';
-  if (
-    lower.includes('bronze') ||
-    lower.includes('honourable') ||
-    lower.includes('third')
-  )
-    return 'text-orange-500';
+  }
+  if (lowerAward.includes('silver') || lowerAward.includes('second')) {
+    return 'text-gray-400';
+  }
+  if (lowerAward.includes('bronze') || lowerAward.includes('third')) {
+    return 'text-orange-600';
+  }
+  if (lowerAward.includes('distinction') || lowerAward.includes('platinum')) {
+    return 'text-purple-400';
+  }
   return 'text-green-400';
 }
