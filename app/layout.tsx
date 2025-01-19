@@ -9,7 +9,7 @@ const jetbrains = JetBrains_Mono({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'dzuizz@portfolio',
-  description: 'Math & Code',
+  description: 'Locked In',
 };
 
 export default function RootLayout({
