@@ -98,7 +98,7 @@ export default function Terminal() {
                       </a>
                       <div className="mt-2 italic text-green-400">
                         &quot;I think my life through code, and code through my
-                        life.&quot;
+                        life.&quot; ~ Anay Mittal
                       </div>
                     </Output>
                   </Section>
