@@ -2,7 +2,7 @@ import achievements from '@/public/data/achievements.json';
 import contests from '@/public/data/contests.json';
 
 export default function Achievements() {
-  return <section className="mb-8">
+  return <section className="">
     <article>
       <div className="space-y-4">
         {achievements.map((year, i: number) => (

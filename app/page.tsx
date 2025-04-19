@@ -3,7 +3,6 @@ import CursorGradient from './components/CursorGradient';
 
 import Hero from './components/Hero';
 import Achievements from './components/Achievements';
-import Socials from './components/Socials';
 
 export default function Home() {
   return (
@@ -25,11 +24,6 @@ export default function Home() {
         {/* Achievements */}
         <RoundedBox>
           <Achievements />
-        </RoundedBox>
-
-        {/* Socials */}
-        <RoundedBox>
-          <Socials />
         </RoundedBox>
 
         {/*<div className="">
