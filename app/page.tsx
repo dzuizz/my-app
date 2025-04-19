@@ -1,18 +1,25 @@
 import Achievements from './components/Achievements';
 import Hero from './components/Hero';
 import Socials from './components/Socials';
+import RoundedBox from './components/RoundedBox';
 
 export default function Home() {
   return (
-    <main className="p-4">
+    <main className="flex flex-col gap-4 p-4">
       {/* Hero */}
-      <Hero />
+      <RoundedBox>
+        <Hero />
+      </RoundedBox>
 
       {/* Achievements */}
-      <Achievements />
+      <RoundedBox>
+        <Achievements />
+      </RoundedBox>
 
       {/* Socials */}
-      <Socials />
+      <RoundedBox>
+        <Socials />
+      </RoundedBox>
 
       {/*<div className="">
         <Terminal />
