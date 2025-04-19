@@ -2,37 +2,54 @@ import achievements from '@/public/data/achievements.json';
 import contests from '@/public/data/contests.json';
 
 export default function Achievements() {
-  return <section className="">
-    <article>
-      <div className="space-y-4">
-        {achievements.map((year, i: number) => (
-          <div key={i}>
-            <h2 className="">{year.year} // {year.grade}</h2>
-            <div className="mt-2 space-y-1">
-              {year.items.map((item, j: number) => (
-                <div key={j}>
-                  <span className="">→ </span>
-                  <span className="">
-                    {item.title + ' '}
-                    {contests[item.title as keyof typeof contests]
-                      ? '(' + contests[item.title as keyof typeof contests] + ') '
-                      : ''
-                    }
-                  </span>
-                  <span className={`${getAwardColor(item.award)}`}>
-                    {item.award}
-                  </span>
-                  {item.filename !== "" && (
-                    <><span className="mr-1">{' '}</span><a className="underline" href={`/certs/${item.filename}`} target="_blank" rel="noopener noreferrer">{'view cert.'}</a></>
-                  )}
+  return (
+    <section className="max-w-3xl mx-auto py-8 px-4">
+      <h1 className="text-2xl font-bold mb-6">Achievements</h1>
+
+      <div className="relative border-l-2 border-[var(--text-color)]">
+        {achievements.map((year, i) => (
+          <div key={i} className="relative pl-4 pb-8 last:pb-0">
+            <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-[var(--accent-color)]"></div>
+            <h2 className="text-lg font-semibold mb-3">
+              {year.year} <span className="text-gray-500 ml-2">// {year.grade}</span>
+            </h2>
+
+            <div className="space-y-3">
+              {year.items.map((item, j) => (
+                <div key={j} className="flex items-baseline">
+                  <span className="text-blue-500 mr-2">→</span>
+                  <div className="flex flex-wrap items-baseline">
+                    <span className="font-medium mr-1">
+                      {item.title}
+                    </span>
+                    {contests[item.title as keyof typeof contests] && (
+                      <span className="text-sm text-gray-500 mr-1">
+                        ({contests[item.title as keyof typeof contests]})
+                      </span>
+                    )}
+                    <span className={`text-sm font-medium ${getAwardColor(item.award)}`}>
+                      {item.award}
+                    </span>
+
+                    {item.filename && (
+                      <a
+                        className="ml-2 text-xs text-blue-600 hover:text-blue-800 hover:underline flex items-center"
+                        href={`/certs/${item.filename}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span className="underline">view certificate</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         ))}
       </div>
-    </article>
-  </section>
+    </section>
+  );
 }
 
 function getAwardColor(award: string) {
@@ -51,4 +68,3 @@ function getAwardColor(award: string) {
   }
   return 'text-green-400';
 }
-
