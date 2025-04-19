@@ -1,5 +1,23 @@
 [
   {
+    "year": "2025",
+    "grade": "Secondary 3",
+    "items": [
+      {
+        "title": "NOI",
+        "award": "GOLD",
+        "ranking": "",
+        "filename": ""
+      },
+      {
+        "title": "SLO",
+        "award": "SILVER",
+        "ranking": "",
+        "filename": ""
+      }
+    ]
+  },
+  {
     "year": "2024",
     "grade": "Secondary 2",
     "items": [
