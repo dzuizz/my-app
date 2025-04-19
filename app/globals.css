@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg-color: #fff;
+  --text-color: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #000;
+    --text-color: #fff;
+  }
+}
+
+@layer base {
+  * {
+    color: inherit;
+  }
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+}
+
