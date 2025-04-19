@@ -57,10 +57,10 @@ function getAwardColor(award: string) {
   if (lowerAward.includes('gold') || lowerAward.includes('first') || lowerAward.includes('champion')) {
     return 'text-yellow-500';
   }
-  if (lowerAward.includes('silver') || lowerAward.includes('second')) {
+  if (lowerAward.includes('silver') || lowerAward.includes('perak') || lowerAward.includes('second')) {
     return 'text-gray-400';
   }
-  if (lowerAward.includes('bronze') || lowerAward.includes('third')) {
+  if (lowerAward.includes('bronze') || lowerAward.includes('honourable mention') || lowerAward.includes('third')) {
     return 'text-orange-600';
   }
   if (lowerAward.includes('distinction') || lowerAward.includes('platinum')) {
