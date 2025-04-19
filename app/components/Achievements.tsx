@@ -3,7 +3,7 @@ import contests from '@/public/data/contests.json';
 
 export default function Achievements() {
   return (
-    <section className="max-w-3xl mx-auto py-8 px-4">
+    <section className="max-w-4xl mx-auto py-8 px-4">
       <h1 className="text-2xl font-bold mb-6">Achievements</h1>
 
       <div className="relative border-l-2 border-[var(--text-color)]">
@@ -38,7 +38,7 @@ export default function Achievements() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <span className="underline">view certificate</span>
+                        <span className="underline">view cert.</span>
                       </a>
                     )}
                   </div>
