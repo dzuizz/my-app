@@ -15,14 +15,14 @@ const PhotoShowcase = () => {
     {
       id: 2,
       src: '/imgs/001.jpg',
-      title: 'title',
+      title: 'A great glory',
       description: 'Canon Photo Marathon 2025 - Vintage',
       tags: ['lighting']
     },
     {
       id: 3,
       src: '/imgs/002.jpg',
-      title: 'title',
+      title: 'Sepia spirals',
       description: 'Canon Photo Marathon 2025 - Vintage',
       tags: ['p&r']
     },
@@ -40,6 +40,20 @@ const PhotoShowcase = () => {
       description: 'Somewhere in the Peranakan Museum, Singapore',
       tags: ['lighting']
     },
+    {
+      id: 6,
+      src: '/imgs/005.jpg',
+      title: 'By hand.',
+      description: 'Singapore NE Show',
+      tags: []
+    },
+    {
+      id: 7,
+      src: '/imgs/006.jpg',
+      title: 'title',
+      description: 'Singapore NE Show',
+      tags: ['-ve']
+    },
   ];
 
   const [activeFilter, setActiveFilter] = useState('all');
@@ -51,7 +65,7 @@ const PhotoShowcase = () => {
   const [modalImageLoaded, setModalImageLoaded] = useState(false); // Modal image loading state
   const imageRef = useRef(null);
 
-  const tags = ['all', 'portrait', 'b&w', 'nature', 'architecture', 'lighting', 'p&r', 'geom'];
+  const tags = ['all', 'portrait', 'b&w', 'nature', 'architecture', 'lighting', 'p&r', 'geom', '-ve'];
 
   useEffect(() => {
     let filtered = photos;
@@ -101,6 +115,7 @@ const PhotoShowcase = () => {
       case 'p&r': return 'Patterns & Repetition';
       case 'architecture': return 'Architecture';
       case 'geom': return 'Geometry';
+      case '-ve': return 'Negative Space';
       case 'all': return 'All';
       default: return tag;
     }
@@ -180,7 +195,7 @@ const PhotoShowcase = () => {
           <h1 className="text-2xl lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
             Photo Showcase - Dzuizz
           </h1>
-          <h2 className='lg:mt-3 font-mono text-slate-500'>they&apos;re terrible omg 🥀</h2>
+          <h2 className='lg:mt-3 font-mono text-slate-500'>🥀</h2>
         </div>
 
         {/* Controls */}
