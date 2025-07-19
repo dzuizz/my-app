@@ -180,7 +180,7 @@ const PhotoShowcase = () => {
           <h1 className="text-2xl lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
             Photo Showcase - Dzuizz
           </h1>
-          <h2 className='lg:mt-3 font-mono text-slate-500'>they're terrible omg 🥀</h2>
+          <h2 className='lg:mt-3 font-mono text-slate-500'>they&apos;re terrible omg 🥀</h2>
         </div>
 
         {/* Controls */}
