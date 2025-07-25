@@ -1,6 +1,6 @@
 import RoundedBox from './components/RoundedBox';
 import CursorGradient from './components/CursorGradient';
-
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Achievements from './components/Achievements';
 
@@ -15,7 +15,9 @@ export default function Home() {
         blur={80}
       />
 
-      <main className="flex flex-col gap-4 p-4">
+      <Navbar />
+
+      <main className="flex flex-col gap-4 p-4 pt-2">
         {/* Hero */}
         <RoundedBox>
           <Hero />

@@ -36,10 +36,6 @@ export default function Hero() {
           </h2>
         </div>
 
-        <p className="text-gray-600 max-w-2xl text-sm">
-          left as an exercise to the reader
-        </p>
-
         <div className="flex flex-wrap gap-4 pt-1">
           {socials.map((social, i) => (
             <a
@@ -58,4 +54,3 @@ export default function Hero() {
     </section>
   );
 }
-

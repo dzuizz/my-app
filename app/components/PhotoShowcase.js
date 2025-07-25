@@ -2,6 +2,10 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+
+import Navbar from '../components/Navbar';
+import RoundedBox from '../components/RoundedBox';
 
 const PhotoShowcase = () => {
   const photos = [
@@ -60,24 +64,20 @@ const PhotoShowcase = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredPhotos, setFilteredPhotos] = useState(photos);
   const [modalPhoto, setModalPhoto] = useState(null);
-  const [imageWidth, setImageWidth] = useState(0);
-  const [loadingStates, setLoadingStates] = useState({}); // Track loading state for each image
-  const [modalImageLoaded, setModalImageLoaded] = useState(false); // Modal image loading state
-  const imageRef = useRef(null);
+  const [loadingStates, setLoadingStates] = useState({});
+  const [modalImageLoaded, setModalImageLoaded] = useState(false);
 
   const tags = ['all', 'portrait', 'b&w', 'nature', 'architecture', 'lighting', 'p&r', 'geom', '-ve'];
 
   useEffect(() => {
     let filtered = photos;
 
-    // Apply tag filter
     if (activeFilter !== 'all') {
       filtered = photos.filter(photo =>
         photo.tags.includes(activeFilter)
       );
     }
 
-    // Apply search filter
     if (searchTerm) {
       filtered = filtered.filter(photo =>
         photo.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -95,7 +95,7 @@ const PhotoShowcase = () => {
 
   const openModal = (photo) => {
     setModalPhoto(photo);
-    setModalImageLoaded(false); // Reset modal image loading state
+    setModalImageLoaded(false);
     document.body.style.overflow = 'hidden';
   };
 
@@ -103,7 +103,6 @@ const PhotoShowcase = () => {
     setModalPhoto(null);
     setModalImageLoaded(false);
     document.body.style.overflow = 'auto';
-    setImageWidth(0);
   };
 
   const getTagDisplayName = (tag) => {
@@ -122,9 +121,6 @@ const PhotoShowcase = () => {
   };
 
   const handleImageLoad = () => {
-    if (imageRef.current) {
-      setImageWidth(imageRef.current.offsetWidth);
-    }
     setModalImageLoaded(true);
   };
 
@@ -149,198 +145,199 @@ const PhotoShowcase = () => {
       }
     };
 
-    const handleResize = () => {
-      if (imageRef.current) {
-        setImageWidth(imageRef.current.offsetWidth);
-      }
-    };
-
     document.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('resize', handleResize);
-
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('resize', handleResize);
     };
   }, [modalPhoto]);
 
-  // Loading Spinner Component
-  const LoadingSpinner = ({ size = 'default' }) => {
-    const spinnerSize = size === 'large' ? 'w-12 h-12' : 'w-8 h-8';
-    return (
-      <div className={`${spinnerSize} border-3 border-indigo-200 border-t-indigo-500 rounded-full animate-spin`}></div>
-    );
-  };
-
-  // Skeleton Loader Component
-  const SkeletonLoader = () => (
-    <div className="animate-pulse">
-      <div className="bg-slate-700 h-64 lg:h-72 rounded-t-2xl"></div>
-      <div className="p-6 space-y-3">
-        <div className="h-4 bg-slate-700 rounded w-3/4"></div>
-        <div className="h-3 bg-slate-700 rounded w-1/2"></div>
-        <div className="flex gap-2">
-          <div className="h-6 bg-slate-700 rounded-full w-16"></div>
-          <div className="h-6 bg-slate-700 rounded-full w-20"></div>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
-    <div className="min-h-screen bg-slate-900 lg:p-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center p-8 lg:p-12">
-          <h1 className="text-2xl lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            Photo Showcase - Dzuizz
-          </h1>
-          <h2 className='lg:mt-3 font-mono text-slate-500'>🥀</h2>
-        </div>
+    <>
+      <Navbar />
 
-        {/* Controls */}
-        <div className="mb-8">
-          {/* Search Bar */}
-          <div className="mb-6">
-            <input
-              type="text"
-              className="w-full px-6 py-4 bg-slate-800 border-2 border-indigo-500 rounded-full text-lg outline-none transition-all duration-300 focus:border-slate-800 focus:ring-4 focus:ring-indigo-200"
-              placeholder="Search photos..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-
-          {/* Filter Tags */}
-          <div className="flex flex-wrap gap-3 justify-center">
-            {tags.map(tag => (
-              <button
-                key={tag}
-                className={`px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 ${activeFilter === tag
-                  ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/40'
-                  : 'bg-slate-800 text-indigo-500 border-2 border-indigo-500 hover:bg-indigo-500 hover:text-white'
-                  }`}
-                onClick={() => handleFilterChange(tag)}
-              >
-                {getTagDisplayName(tag)}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Photos Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-          {filteredPhotos.map((photo, index) => (
-            <div
-              key={photo.id}
-              className="group bg-slate-800 backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-3 hover:scale-105"
-              onClick={() => openModal(photo)}
-              style={{
-                animationDelay: `${index * 100}ms`
-              }}
-            >
-              {/* Photo Container */}
-              <div className="relative h-64 lg:h-72 overflow-hidden bg-slate-700">
-                {/* Loading State */}
-                {!loadingStates[photo.id] && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-slate-700">
-                    <LoadingSpinner />
-                  </div>
-                )}
-
-                <Image
-                  src={photo.src}
-                  alt={photo.title}
-                  fill
-                  className={`object-cover transition-all duration-500 group-hover:scale-110 ${loadingStates[photo.id] ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  onLoadingComplete={() => handleGridImageLoad(photo.id)}
-                  onLoadStart={() => handleGridImageStart(photo.id)}
-                />
-
-                {/* Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 ${!loadingStates[photo.id] ? 'pointer-events-none' : ''
-                  }`}>
-                  <h3 className="text-slate-100 font-bold text-xl">
-                    {photo.title}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Photo Info */}
-              <div className="p-6">
-                <p className="text-slate-500 mb-4 line-clamp-2 leading-relaxed">
-                  {photo.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {photo.tags.map(tag => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-slate-100 text-xs font-medium rounded-full"
-                    >
-                      {getTagDisplayName(tag)}
-                    </span>
-                  ))}
-                </div>
+      <main className="flex flex-col gap-4 p-4 pt-2">
+        {/* Photo Showcase Content */}
+        <RoundedBox>
+          <div className="max-w-5xl mx-auto">
+            {/* Header */}
+            <div className="space-y-4 mb-12">
+              <div className="space-y-1">
+                <h1 className="text-3xl font-bold tracking-tight">
+                  Photo Showcase
+                </h1>
+                <h2 className="text-lg text-gray-600">
+                  A collection of moments captured through the lens
+                </h2>
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* No Results */}
-        {filteredPhotos.length === 0 && (
-          <div className="text-center py-16 bg-slate-800 border-2 border-indigo-500 backdrop-blur-lg rounded-2xl">
-            <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-2xl font-bold text-slate-500 mb-2">
-              No photos found
-            </h3>
-            <p className="text-slate-500">
-              Try adjusting your search or filter criteria
-            </p>
+            {/* Controls */}
+            <div className="space-y-6 mb-8">
+              {/* Search Bar */}
+              <div>
+                <input
+                  type="text"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                  style={{
+                    backgroundColor: 'var(--bg-color)',
+                    borderColor: 'var(--border-color)',
+                    color: 'var(--text-color)'
+                  }}
+                  placeholder="Search photos..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
+
+              {/* Filter Tags */}
+              <div className="flex flex-wrap gap-2">
+                {tags.map(tag => (
+                  <button
+                    key={tag}
+                    className={`px-3 py-1 text-sm rounded-full border transition-all duration-200 ${activeFilter === tag
+                      ? 'text-white border-transparent'
+                      : 'border-gray-300 hover:border-purple-300'
+                      }`}
+                    style={{
+                      backgroundColor: activeFilter === tag ? 'var(--accent-color)' : 'transparent',
+                      borderColor: activeFilter === tag ? 'var(--accent-color)' : 'var(--border-color)',
+                      color: activeFilter === tag ? 'white' : 'var(--text-color)'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (activeFilter !== tag) {
+                        e.target.style.backgroundColor = 'var(--accent-color)';
+                        e.target.style.color = 'white';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (activeFilter !== tag) {
+                        e.target.style.backgroundColor = 'transparent';
+                        e.target.style.color = 'var(--text-color)';
+                      }
+                    }}
+                    onClick={() => handleFilterChange(tag)}
+                  >
+                    {getTagDisplayName(tag)}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Photos Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredPhotos.map((photo, index) => (
+                <div
+                  key={photo.id}
+                  className="group cursor-pointer rounded-lg overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300"
+                  style={{ borderColor: 'var(--border-color)' }}
+                  onClick={() => openModal(photo)}
+                >
+                  {/* Photo Container */}
+                  <div className="relative h-64 overflow-hidden bg-gray-100">
+                    {!loadingStates[photo.id] && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                        <div className="w-6 h-6 border-2 border-gray-300 border-t-purple-500 rounded-full animate-spin"></div>
+                      </div>
+                    )}
+
+                    <Image
+                      src={photo.src}
+                      alt={photo.title}
+                      fill
+                      className={`object-cover transition-all duration-300 group-hover:scale-105 ${loadingStates[photo.id] ? 'opacity-100' : 'opacity-0'
+                        }`}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      onLoadingComplete={() => handleGridImageLoad(photo.id)}
+                      onLoadStart={() => handleGridImageStart(photo.id)}
+                    />
+                  </div>
+
+                  {/* Photo Info */}
+                  <div className="p-4">
+                    <h3 className="font-semibold text-lg mb-1 line-clamp-1">
+                      {photo.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                      {photo.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1">
+                      {photo.tags.slice(0, 3).map(tag => (
+                        <span
+                          key={tag}
+                          className="px-2 py-1 text-xs rounded-full"
+                          style={{
+                            backgroundColor: 'var(--accent-color)',
+                            color: 'white'
+                          }}
+                        >
+                          {getTagDisplayName(tag)}
+                        </span>
+                      ))}
+                      {photo.tags.length > 3 && (
+                        <span className="px-2 py-1 text-xs text-gray-500">
+                          +{photo.tags.length - 3}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* No Results */}
+            {filteredPhotos.length === 0 && (
+              <div className="text-center py-16">
+                <div className="text-4xl mb-4">🔍</div>
+                <h3 className="text-xl font-semibold mb-2">
+                  No photos found
+                </h3>
+                <p className="text-gray-600">
+                  Try adjusting your search or filter criteria
+                </p>
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </RoundedBox>
+      </main>
 
       {/* Modal */}
       {modalPhoto && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-fadeIn"
+          className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
           onClick={closeModal}
         >
           <div
-            className="relative w-full max-w-7xl h-[85vh] bg-slate-800 rounded-2xl overflow-hidden animate-slideIn"
+            className="relative w-full max-w-6xl max-h-[90vh] bg-white rounded-lg overflow-hidden"
+            style={{ backgroundColor: 'var(--bg-color)' }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
-              className="absolute top-6 right-6 z-10 w-12 h-12 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center text-2xl font-bold transition-colors duration-200"
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black bg-opacity-50 hover:bg-opacity-75 text-white rounded-full flex items-center justify-center text-xl font-bold transition-colors duration-200"
               onClick={closeModal}
             >
               ×
             </button>
 
-            {/* Modal Content with Side Layout */}
-            <div className="flex h-full">
-              {/* Image Section - Dynamic */}
-              <div className="flex-1 p-8 flex items-center justify-center relative">
-                {/* Modal Loading State */}
+            {/* Modal Content */}
+            <div className="flex flex-col lg:flex-row h-full max-h-[90vh]">
+              {/* Image Section */}
+              <div className="flex-1 p-6 flex items-center justify-center relative">
                 {!modalImageLoaded && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-800 rounded-xl">
-                    <LoadingSpinner size="large" />
-                    <p className="text-slate-300 mt-4 text-lg">Loading image...</p>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <div className="w-8 h-8 border-2 border-gray-300 border-t-purple-500 rounded-full animate-spin"></div>
+                    <p className="text-gray-500 mt-4">Loading image...</p>
                   </div>
                 )}
 
-                <div className={`border-4 border-slate-100 rounded-xl overflow-hidden shadow-2xl max-w-full max-h-full transition-opacity duration-500 ${modalImageLoaded ? 'opacity-100' : 'opacity-0'
+                <div className={`border border-gray-200 rounded-lg overflow-hidden shadow-lg max-w-full max-h-full transition-opacity duration-500 ${modalImageLoaded ? 'opacity-100' : 'opacity-0'
                   }`}>
                   <Image
-                    ref={imageRef}
                     src={modalPhoto.src}
                     alt={modalPhoto.title}
                     width={800}
                     height={600}
-                    className="w-auto h-auto max-w-full max-h-[75vh] object-contain"
+                    className="w-auto h-auto max-w-full max-h-[70vh] object-contain"
                     sizes="70vw"
                     priority
                     onLoad={handleImageLoad}
@@ -348,21 +345,22 @@ const PhotoShowcase = () => {
                 </div>
               </div>
 
-              {/* Info Section - Fixed Width */}
-              <div className="w-80 p-8 flex flex-col justify-center bg-slate-700/50 border-l border-slate-600">
-                <div className={`space-y-6 transition-opacity duration-500 ${modalImageLoaded ? 'opacity-100' : 'opacity-50'
+              {/* Info Section */}
+              <div className="w-full lg:w-80 p-6 border-t lg:border-t-0 lg:border-l border-gray-200 overflow-y-auto">
+                <div className={`space-y-4 transition-opacity duration-500 ${modalImageLoaded ? 'opacity-100' : 'opacity-50'
                   }`}>
-                  <h3 className="text-3xl font-bold text-slate-100 leading-tight">
+                  <h3 className="text-2xl font-bold leading-tight">
                     {modalPhoto.title}
                   </h3>
-                  <p className="text-slate-300 text-base leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {modalPhoto.description}
                   </p>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2">
                     {modalPhoto.tags.map(tag => (
                       <span
                         key={tag}
-                        className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-sm font-medium rounded-full shadow-lg"
+                        className="px-3 py-1 text-sm rounded-full text-white"
+                        style={{ backgroundColor: 'var(--accent-color)' }}
                       >
                         {getTagDisplayName(tag)}
                       </span>
@@ -374,33 +372,7 @@ const PhotoShowcase = () => {
           </div>
         </div>
       )}
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
-        @keyframes slideIn {
-          from { 
-            opacity: 0;
-            transform: scale(0.95) translateY(20px);
-          }
-          to { 
-            opacity: 1;
-            transform: scale(1) translateY(0);
-          }
-        }
-        
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-        
-        .animate-slideIn {
-          animation: slideIn 0.4s ease-out;
-        }
-      `}</style>
-    </div>
+    </>
   );
 };
 
