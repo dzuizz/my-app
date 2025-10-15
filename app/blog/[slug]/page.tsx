@@ -73,9 +73,10 @@ async function getBlogPost(slug: string) {
   }
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const { frontmatter, content } = await getBlogPost(params.slug);
-  const { prev, next } = await getAdjacentPosts(params.slug);
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const { frontmatter, content } = await getBlogPost(slug);
+  const { prev, next } = await getAdjacentPosts(slug);
 
   return (
     <article className="min-h-screen p-8">
@@ -154,8 +155,9 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { frontmatter } = await getBlogPost(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const { frontmatter } = await getBlogPost(slug);
 
   return {
     title: frontmatter.title,

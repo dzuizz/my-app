@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,7 +8,7 @@ import Navbar from '../components/Navbar';
 import RoundedBox from '../components/RoundedBox';
 
 const PhotoShowcase = () => {
-  const photos = [
+  const photos = useMemo(() => [
     {
       id: 1,
       src: '/imgs/000.jpg',
@@ -58,7 +58,7 @@ const PhotoShowcase = () => {
       description: 'Singapore NE Show',
       tags: ['-ve']
     },
-  ];
+  ], []);
 
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
@@ -87,7 +87,7 @@ const PhotoShowcase = () => {
     }
 
     setFilteredPhotos(filtered);
-  }, [activeFilter, searchTerm]);
+  }, [activeFilter, searchTerm, photos]);
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);

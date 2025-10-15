@@ -1,6 +1,6 @@
 'use client';
 import RoundedBox from '@/app/components/RoundedBox';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 type Choice = 'rock' | 'paper' | 'scissors' | null;
 type Result = "It's a tie!" | 'You win!' | 'Computer wins!' | '';
@@ -18,7 +18,7 @@ const RockPaperScissors = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [countdown, setCountdown] = useState<number | null>(null);
 
-  const choices: Choice[] = ['rock', 'paper', 'scissors'];
+  const choices: Choice[] = useMemo(() => ['rock', 'paper', 'scissors'], []);
 
   const icons = {
     rock: '✊',
@@ -61,7 +61,7 @@ const RockPaperScissors = () => {
 
       setIsAnimating(false);
     }
-  }, [countdown, playerChoice]);
+  }, [countdown, playerChoice, choices]);
 
   const determineWinner = (player: Choice, computer: Choice): Result => {
     if (player === computer) return "It's a tie!";
