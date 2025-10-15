@@ -30,6 +30,11 @@ export default function Achievements() {
                     <span className={`text-sm font-medium ${getAwardColor(item.award)}`}>
                       {item.award}
                     </span>
+                    {item.ranking && (
+                      <span className="ml-2 text-xs font-small">
+                        {item.ranking}
+                      </span>
+                    )}
 
                     {item.filename && (
                       <a
@@ -58,7 +63,7 @@ function getAwardColor(award: string) {
     return 'text-yellow-500';
   }
   if (lowerAward.includes('silver') || lowerAward.includes('perak') || lowerAward.includes('second')) {
-    return 'text-gray-400';
+    return 'text-slate-500';
   }
   if (lowerAward.includes('bronze') || lowerAward.includes('honourable mention') || lowerAward.includes('third')) {
     return 'text-orange-600';
