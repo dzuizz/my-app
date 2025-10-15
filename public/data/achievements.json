@@ -10,10 +10,28 @@
         "filename": "2025NOI.pdf"
       },
       {
+        "title": "SJPO",
+        "award": "SILVER",
+        "ranking": "",
+        "filename": "2025SJPO.pdf"
+      },
+      {
         "title": "SLO",
         "award": "SILVER",
         "ranking": "",
         "filename": "2025SLO.jpg"
+      },
+      {
+        "title": "SMO Senior",
+        "award": "SILVER",
+        "ranking": "",
+        "filename": "2025SMOS.pdf"
+      },
+      {
+        "title": "SMO Open",
+        "award": "HONOURABLE MENTION",
+        "ranking": "",
+        "filename": "2025SMOO.pdf"
       }
     ]
   },
@@ -21,6 +39,12 @@
     "year": "2024",
     "grade": "Secondary 2",
     "items": [
+      {
+        "title": "AIO",
+        "award": "GOLD",
+        "ranking": "",
+        "filename": ""
+      },
       {
         "title": "OSN SMP Matematika",
         "award": "PERAK",
