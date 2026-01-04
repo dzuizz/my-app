@@ -1,38 +1,13 @@
-import RoundedBox from './components/RoundedBox';
-import CursorGradient from './components/CursorGradient';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Achievements from './components/Achievements';
+import About from "@/components/About"
+import Achievements from "@/components/Achievements"
+import Projects from "@/components/Projects"
+import ReachMe from "@/components/ReachMe"
 
 export default function Home() {
-  return (
-    <>
-      {/* Cursor gradient effect */}
-      <CursorGradient
-        size={350}
-        opacity={0.3}
-        color="var(--accent-color)"
-        blur={80}
-      />
-
-      <Navbar />
-
-      <main className="flex flex-col gap-4 p-4 pt-2">
-        {/* Hero */}
-        <RoundedBox>
-          <Hero />
-        </RoundedBox>
-
-        {/* Achievements */}
-        <RoundedBox>
-          <Achievements />
-        </RoundedBox>
-
-        {/*<div className="">
-        <Terminal />
-      </div>
-      */}
-      </main>
-    </>
-  );
+  return <div className="min-h-screen">
+    <About />
+    <Achievements />
+    <Projects />
+    <ReachMe />
+  </div>
 }

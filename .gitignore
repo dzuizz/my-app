@@ -1,123 +1,41 @@
-# Dependencies
-node_modules/
-.pnp/
-.pnp.js
-.yarn/install-state.gz
-package-lock.json
-yarn.lock
-.npm
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Linting & Formatting
-.eslintcache
-.prettier-cache/
-.stylelintcache
-.lint-staged-cache/
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-# Testing
-coverage/
-.nyc_output/
-*.lcov
+# testing
+/coverage
 
-# Next.js
-.next/
-out/
-.swc/
-.turbo
+# next.js
+/.next/
+/out/
 
-# Production
-build/
-dist/
-.env.production
+# production
+/build
 
-# Environment Variables
-.env
-.env.*
-!.env.example
+# misc
+.DS_Store
+*.pem
 
-# Debug
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-logs/
-*.log
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
+# env files (can opt-in for committing if needed)
+.env*
 
-# IDE - JetBrains
-.idea/
-*.iml
-*.iws
-.idea_modules/
+# vercel
+.vercel
 
-# IDE - Other
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-
-# Linux
-*~
-.fuse_hidden*
-.directory
-.Trash-*
-
-# TypeScript
+# typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# Caches
-.cache/
-.webpack/
-
-# Temp files
-tmp/
-temp/
-*.tmp
-*.temp
-
-# Editor backups
-*.bak
-*.gho
-*.ori
-*.orig
-*.tmp
-
-# Build tools
-.grunt/
-bower_components/
-.bower-cache/
-.bower-registry/
-.bower-tmp/
-
-# Misc
-*.pem
-.vercel
-.netlify
-sitemap.xml
-sitemap.xml.gz
-
-# Project specific
-/public/workbox-*.js
-/public/sw.js
-/public/fallback-*.js
