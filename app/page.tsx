@@ -1,13 +1,24 @@
-import About from "@/components/About"
+import Navigation from "@/components/Navigation"
+import Hero from "@/components/Hero"
 import Achievements from "@/components/Achievements"
 import Projects from "@/components/Projects"
-import ReachMe from "@/components/ReachMe"
+import Extras from "@/components/Extras"
+import Footer from "@/components/Footer"
+import { getPinnedPosts } from "@/lib/blog"
+import { getPinnedPhotos } from "@/lib/photos"
 
 export default function Home() {
-  return <div className="min-h-screen">
-    <About />
-    <Achievements />
-    <Projects />
-    <ReachMe />
-  </div>
+  const pinnedPosts = getPinnedPosts()
+  const pinnedPhotos = getPinnedPhotos()
+
+  return (
+    <div className="min-h-screen">
+      <Navigation />
+      <Hero />
+      <Achievements />
+      <Projects />
+      <Extras pinnedPosts={pinnedPosts} pinnedPhotos={pinnedPhotos} />
+      <Footer />
+    </div>
+  )
 }

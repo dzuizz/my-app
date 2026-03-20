@@ -1,42 +1,121 @@
 @import "tailwindcss";
 
-@layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+@theme {
+  --color-kuromi-black: #0c0c12;
+  --color-kuromi-surface: #14141e;
+  --color-kuromi-card: #1c1c2a;
+  --color-kuromi-border: #2a2a3d;
+  --color-kuromi-pink: #FF4D8D;
+  --color-kuromi-pink-soft: #FF8AB5;
+  --color-kuromi-purple: #B388FF;
+  --color-kuromi-purple-dim: #8B5CF6;
+  --color-kuromi-text: #e4e4ed;
+  --color-kuromi-muted: #9090a8;
+
+  --color-light-bg: #FFF8FA;
+  --color-light-surface: #FFFFFF;
+  --color-light-card: #FFF0F5;
+  --color-light-border: #F0D0E0;
+  --color-light-text: #1a1a2e;
+  --color-light-muted: #6b6b80;
+
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
-/* Custom Retro Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-  background-color: #09090b; /* zinc-950 */
+/* ---- Dark mode (default) ---- */
+:root {
+  --bg: #0c0c12;
+  --surface: #14141e;
+  --card: #1c1c2a;
+  --border: #2a2a3d;
+  --pink: #FF4D8D;
+  --pink-soft: #FF8AB5;
+  --purple: #B388FF;
+  --text: #e4e4ed;
+  --muted: #9090a8;
+  --faded: #50506a;
+  color-scheme: dark;
 }
 
-::-webkit-scrollbar-track {
-  background-color: #18181b; /* zinc-900 */
-  border-left: 1px solid #27272a; /* zinc-800 */
+/* ---- Light mode ---- */
+.light {
+  --bg: #FFF8FA;
+  --surface: #FFFFFF;
+  --card: #FFF0F5;
+  --border: #F0D0E0;
+  --pink: #E91E7A;
+  --pink-soft: #FF6BA0;
+  --purple: #7C3AED;
+  --text: #1a1a2e;
+  --muted: #6b6b80;
+  --faded: #b0b0c0;
+  color-scheme: light;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: #3f3f46; /* zinc-700 */
-  border: 2px solid #18181b; /* zinc-900 */
+body {
+  background: var(--bg);
+  color: var(--text);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: #10b981; /* emerald-500 */
-}
-
-/* Global Selection Style */
 ::selection {
-  background-color: rgba(16, 185, 129, 0.3); /* emerald-500 */
-  color: #a7f3d0; /* emerald-200 */
+  background-color: color-mix(in srgb, var(--pink) 25%, transparent);
+  color: var(--pink);
 }
 
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
+html { scroll-behavior: smooth; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--pink); }
+
+/* Utilities */
+.kuromi-glow {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--pink) 12%, transparent),
+              0 0 40px color-mix(in srgb, var(--purple) 6%, transparent);
 }
+
+.kuromi-border {
+  border: 1px solid var(--border);
+}
+
+/* Section gradient backgrounds */
+.gradient-hero {
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 20%, color-mix(in srgb, var(--pink) 6%, transparent), transparent),
+    radial-gradient(ellipse 60% 50% at 10% 80%, color-mix(in srgb, var(--purple) 5%, transparent), transparent),
+    var(--bg);
+}
+
+.gradient-achievements {
+  background:
+    radial-gradient(ellipse 50% 40% at 90% 30%, color-mix(in srgb, var(--purple) 4%, transparent), transparent),
+    linear-gradient(to bottom, var(--bg), color-mix(in srgb, var(--surface) 50%, var(--bg)));
+}
+
+.gradient-projects {
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 60%, color-mix(in srgb, var(--pink) 4%, transparent), transparent),
+    var(--bg);
+}
+
+.gradient-extras {
+  background:
+    radial-gradient(ellipse 50% 40% at 80% 70%, color-mix(in srgb, var(--purple) 5%, transparent), transparent),
+    radial-gradient(ellipse 40% 30% at 10% 20%, color-mix(in srgb, var(--pink) 3%, transparent), transparent),
+    var(--bg);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.5s ease-out forwards; }

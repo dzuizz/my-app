@@ -1,21 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import RetroEffects from "@/components/RetroEffects";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
   title: "DZUIZZ.COM",
-  description: "Ahmad Dzuizz Annajib - Web Portfolio",
+  description: "Ahmad Dzuizz Annajib - Student & Competitive Programmer",
 };
 
 export default function RootLayout({
@@ -26,12 +32,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-zinc-950 text-zinc-300 antialiased selection:bg-emerald-500/30 selection:text-emerald-200`}
+        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <RetroEffects />
-        <main className="relative z-10">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );
