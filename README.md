@@ -77,5 +77,9 @@ please ensure your code follows the existing style and passes linting.
 
 - [ ] (possibly) cloud db + auth setup for easier achievements editing + storage
 
+## 📄 license
+
+this project is licensed under the [MIT License](LICENSE).
+
 ---
 *~ dzuizz*
