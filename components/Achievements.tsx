@@ -17,7 +17,7 @@ type AchievementYear = {
 
 const getAwardColor = (award: string) => {
   const l = award.toLowerCase();
-  if (l.includes('gold') || l.includes('platinum') || l.includes('perfect') || l.includes('1st'))
+  if (l.includes('gold') || l.includes('platinum') || l.includes('perfect') || l.includes('first'))
     return 'var(--pink)';
   if (l.includes('silver') || l.includes('perak'))
     return 'var(--purple)';
