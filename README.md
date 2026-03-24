@@ -82,4 +82,4 @@ please ensure your code follows the existing style and passes linting.
 this project is licensed under the [MIT License](LICENSE).
 
 ---
-*~ dzuizz*
+_~ dzuizz_
