@@ -1,5 +1,17 @@
 [
   {
+    "year": "2026",
+    "grade": "Secondary 4",
+    "items": [
+      {
+        "title": "Mosque Tech Challenge",
+        "award": "FIRST PRIZE",
+        "ranking": "Champion",
+        "filename": ""
+      }
+    ]
+  },
+  {
     "year": "2025",
     "grade": "Secondary 3",
     "items": [
