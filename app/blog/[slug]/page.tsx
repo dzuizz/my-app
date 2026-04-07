@@ -24,7 +24,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) notFound();
 
   return (
-    <div className="min-h-screen gradient-hero">
+    <div className="min-h-screen page-background">
       <Navigation />
       <article className="max-w-2xl mx-auto px-5 pt-24 pb-16">
         <div className="mb-8">

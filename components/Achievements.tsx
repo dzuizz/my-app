@@ -37,7 +37,7 @@ export default function Achievements() {
   }, []);
 
   return (
-    <section id="achievements" className="py-16 px-5 gradient-achievements">
+    <section id="achievements" className="py-16 px-5">
       <div className="max-w-3xl mx-auto">
         <SectionHeader title="Achievements" />
 

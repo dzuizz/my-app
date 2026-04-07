@@ -10,7 +10,7 @@ type Props = {
 
 export default function Extras({ pinnedPosts, pinnedPhotos }: Props) {
   return (
-    <section id="extras" className="py-16 px-5 gradient-extras">
+    <section id="extras" className="py-16 px-5">
       <div className="max-w-3xl mx-auto space-y-12">
 
         {/* ---- Blog section ---- */}

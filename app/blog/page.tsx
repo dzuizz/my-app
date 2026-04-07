@@ -12,7 +12,7 @@ export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <div className="min-h-screen gradient-extras">
+    <div className="min-h-screen page-background">
       <Navigation />
       <div className="max-w-3xl mx-auto px-5 pt-24 pb-16">
         <div className="flex items-center gap-4 mb-10">

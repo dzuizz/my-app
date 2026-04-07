@@ -12,7 +12,7 @@ export default function Home() {
   const pinnedPhotos = getPinnedPhotos()
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen page-background">
       <Navigation />
       <Hero />
       <Achievements />

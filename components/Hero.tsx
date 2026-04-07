@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative pt-24 pb-16 px-5 overflow-hidden gradient-hero">
+    <section className="relative pt-24 pb-16 px-5 overflow-hidden">
       <div className="relative z-10 max-w-3xl mx-auto">
         <div className="flex flex-col sm:flex-row items-start gap-6">
           {/* Kuromi image */}

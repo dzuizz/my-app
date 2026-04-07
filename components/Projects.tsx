@@ -12,7 +12,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-16 px-5 gradient-projects">
+    <section id="projects" className="py-16 px-5">
       <div className="max-w-3xl mx-auto">
         <SectionHeader title="Projects" />
 
