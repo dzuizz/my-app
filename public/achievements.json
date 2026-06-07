@@ -8,6 +8,12 @@
         "award": "FIRST PRIZE",
         "ranking": "Champion",
         "filename": ""
+      },
+      {
+        "title": "SLO",
+        "award": "SILVER",
+        "ranking": "",
+        "filename": "2026SLO.JPG"
       }
     ]
   },
@@ -20,6 +26,12 @@
         "award": "GOLD",
         "ranking": "",
         "filename": "2025NOI.pdf"
+      },
+      {
+        "title": "SIL",
+        "award": "GOLD",
+        "ranking": "",
+        "filename": "2025SIL.pdf"
       },
       {
         "title": "SJPO",
@@ -576,4 +588,3 @@
     ]
   }
 ]
-
